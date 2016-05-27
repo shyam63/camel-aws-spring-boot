@@ -14,8 +14,8 @@ import com.amazonaws.services.sqs.AmazonSQSClient;
 @Configuration
 public class BeanConfigurations {
 
-    private AWSCredentials awsCredentials = new BasicAWSCredentials("AKIAIVBJUYL7PEHQFFYQ",
-            "eEXIpVzTiR+Ery26YvAM9ahjAgXUn8cnKWeCRvmz");
+    private AWSCredentials awsCredentials = new BasicAWSCredentials(System.getProperty("accessKey"),
+            System.getProperty("secretKey"));
 
     @Bean public RandomDataGenerator randomDataGenerator() {
         return new RandomDataGenerator();
