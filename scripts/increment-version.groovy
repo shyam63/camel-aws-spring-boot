@@ -128,5 +128,5 @@ File pomFile = new File(pomFilename)
 String contents = pomFile.text
 
 // replace "<version>1.0</version>" with the new version
-contents = contents.replaceAll("<version>.+</version>", "<version>${newVersion['raw']}</version>")
+contents = contents.replaceAll("<version>.+</version><!-- BUILD-VERSION -->", "<version>${newVersion['raw']}</version><!-- BUILD-VERSION -->")
 pomFile.write(contents)
