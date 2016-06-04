@@ -8,10 +8,14 @@ def config = [
         // list of version folders
         artifactoryUrl: 'http://ec2-54-173-45-74.compute-1.amazonaws.com:8081/artifactory/ext-release-local/com/shyam/camel/camel-aws-spring-boot/',
 
-        buildType: System.getenv("BUILDTYPE") && !System.getenv("BUILDTYPE").isAllWhitespace()  ?: 'PATCH', // MAJOR, MINOR, PATCH, SNAPSHOT
-        workspace: System.getenv("WORKSPACE") ?: "."
+        buildType: 'SNAPSHOT', // MAJOR, MINOR, PATCH, SNAPSHOT
+        workspace: "."
 ]
 println "BUILDTYPE: "+System.getenv("BUILDTYPE")
+println "BuildType: $config['buildType']"
+if(!System.getenv("BUILDTYPE").isAllWhitespace()) {
+    config['buildType'] = System.getenv("BUILDTYPE")
+}
 println "BuildType: $config['buildType']"
 
 if(config['buildType'] == 'SNAPSHOT') {
