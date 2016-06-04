@@ -6,7 +6,7 @@
 // CONFIGURATION: You can change this
 def config = [
         // list of version folders
-        artifactoryUrl: 'https://binrepo.target.com/artifactory/apps-release-local/sitemapgen/sitemapgen/',
+        artifactoryUrl: 'http://ec2-54-173-45-74.compute-1.amazonaws.com:8081/artifactory/ext-release-local/com/shyam/camel/camel-aws-spring-boot/',
 
         buildType: System.getenv("BUILDTYPE") && !System.getenv("BUILDTYPE").isAllWhitespace()  ?: 'SNAPSHOT', // MAJOR, MINOR, PATCH, SNAPSHOT
         workspace: System.getenv("WORKSPACE") ?: "."
@@ -128,5 +128,5 @@ File pomFile = new File(pomFilename)
 String contents = pomFile.text
 
 // replace "<version>1.0</version>" with the new version
-contents = contents.replaceAll("<version>.+</version><!-- BUILD-VERSION -->", "<version>${newVersion['raw']}</version><!-- BUILD-VERSION -->")
+contents = contents.replaceAll("<version>.+</version>", "<version>${newVersion['raw']}</version>")
 pomFile.write(contents)
