@@ -15,6 +15,9 @@
         <maven-war-plugin-version>2.6</maven-war-plugin-version>
         <camel-version>2.17.1</camel-version>
     </properties>
+    <scm>
+        <connection>scm:git:https://github.com/shyam63/camel-aws-spring-boot.git</connection>
+    </scm>
 
     <dependencyManagement>
         <dependencies>
