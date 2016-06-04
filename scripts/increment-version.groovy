@@ -11,8 +11,8 @@ def config = [
         buildType: System.getenv("BUILDTYPE") && !System.getenv("BUILDTYPE").isAllWhitespace()  ?: 'PATCH', // MAJOR, MINOR, PATCH, SNAPSHOT
         workspace: System.getenv("WORKSPACE") ?: "."
 ]
-println(System.getenv("BUILDTYPE"))
-println(config['buildType'])
+println "BUILDTYPE: "+System.getenv("BUILDTYPE")
+println "BuildType: $config['buildType']"
 
 if(config['buildType'] == 'SNAPSHOT') {
     config['artifactoryUrl'] = 'http://ec2-54-173-45-74.compute-1.amazonaws.com:8081/artifactory/ext-snapshot-local/com/shyam/camel/camel-aws-spring-boot/'
