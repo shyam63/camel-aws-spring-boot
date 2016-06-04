@@ -7,21 +7,10 @@
 def config = [
         // list of version folders
         artifactoryUrl: 'http://ec2-54-173-45-74.compute-1.amazonaws.com:8081/artifactory/ext-release-local/com/shyam/camel/camel-aws-spring-boot/',
-
-        buildType: 'SNAPSHOT', // MAJOR, MINOR, PATCH, SNAPSHOT
         workspace: "."
 ]
-println "BUILDTYPE: "+System.getenv("BUILDTYPE")
 
-if(!System.getenv("BUILDTYPE").isAllWhitespace()) {
-    config['buildType'] = System.getenv("BUILDTYPE")
-}
 
-if(config['buildType'] == 'SNAPSHOT') {
-    config['artifactoryUrl'] = 'http://ec2-54-173-45-74.compute-1.amazonaws.com:8081/artifactory/ext-snapshot-local/com/shyam/camel/camel-aws-spring-boot/'
-}
-
-println "BuildType: $config"
 /**
  * Get current version. Current version is considered to be the
  */
@@ -85,10 +74,6 @@ try {
 
 println "Current Version: ${latestVersion}"
 
-/**
- * Increment version based on the type of release we are dealing with
- */
-
 Map newVersion = [
         'snapshot': new Boolean(latestVersion['snapshot']),
         'major': new Integer(latestVersion['major']),
@@ -96,33 +81,8 @@ Map newVersion = [
         'patch': new Integer(latestVersion['patch'])
 ]
 
-switch(config['buildType']) {
-    case 'MAJOR':
-        newVersion['major']++
-        newVersion['minor'] = 0
-        newVersion['patch'] = 0
-        newVersion['snapshot'] = false
-        break
-
-    case 'MINOR':
-        newVersion['minor']++
-        newVersion['patch'] = 0
-        newVersion['snapshot'] = false
-        break
-
-    case 'PATCH':
-        newVersion['patch']++
-        newVersion['snapshot'] = false
-        break
-
-    case 'SNAPSHOT':
-        newVersion['snapshot'] = true
-}
-
 newVersion['raw'] = "${newVersion['major']}.${newVersion['minor']}.${newVersion['patch']}"
-if (newVersion['snapshot']) {
-    newVersion['raw'] = newVersion['raw'] + '-SNAPSHOT'
-}
+newVersion['raw'] = newVersion['raw'] + '-SNAPSHOT'
 
 println "Next Version: ${newVersion['raw']}"
 
