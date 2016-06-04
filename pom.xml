@@ -16,7 +16,7 @@
         <camel-version>2.17.1</camel-version>
     </properties>
     <scm>
-        <connection>scm:git:https://github.com/shyam63/camel-aws-spring-boot.git</connection>
+        <connection>scm:git:git@github.com:shyam63/camel-aws-spring-boot.git</connection>
     </scm>
 
     <dependencyManagement>
