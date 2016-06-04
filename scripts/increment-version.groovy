@@ -12,6 +12,10 @@ def config = [
         workspace: System.getenv("WORKSPACE") ?: "."
 ]
 println(config['buildType'])
+
+if(config['buildType'] == 'SNAPSHOT') {
+    config['artifactoryUrl'] = 'http://ec2-54-173-45-74.compute-1.amazonaws.com:8081/artifactory/ext-snapshot-local/com/shyam/camel/camel-aws-spring-boot/'
+}
 /**
  * Get current version. Current version is considered to be the
  */
@@ -69,7 +73,7 @@ try {
             'snapshot': false,
             'major': 0,
             'minor': 0,
-            'patch': 1
+            'patch': 0
     ]
 }
 
