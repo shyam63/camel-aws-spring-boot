@@ -176,11 +176,6 @@
             <name>ip-172-31-49-123-releases</name>
             <url>http://ec2-54-173-45-74.compute-1.amazonaws.com:8081/artifactory/ext-release-local</url>
         </repository>
-        <snapshotRepository>
-            <id>snapshots</id>
-            <name>ip-172-31-49-123-snapshots</name>
-            <url>http://ec2-54-173-45-74.compute-1.amazonaws.com:8081/artifactory/ext-snapshot-local</url>
-        </snapshotRepository>
     </distributionManagement>
 
 </project>
