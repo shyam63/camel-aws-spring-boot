@@ -7,7 +7,7 @@
     <artifactId>camel-aws-spring-boot</artifactId>
     <packaging>war</packaging>
     <name>Camel :: Aws :: Spring Boot</name>
-    <version>0.0.6-SNAPSHOT</version><!-- BUILD-VERSION -->
+    <version>0.2.0-SNAPSHOT</version><!-- BUILD-VERSION -->
     <description>An example showing how to work with Camel, AWS and Spring Boot</description>
 
     <properties>
